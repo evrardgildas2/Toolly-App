@@ -1,0 +1,411 @@
+/* Section Hero / carrousel */
+.hero { 
+  position: relative; 
+  border-radius: 20px; 
+  overflow: hidden; 
+  min-height: 380px; 
+  margin-top: 24px; 
+  background: var(--vert-fonce); 
+  display: flex; 
+  align-items: center; 
+  color: #fff; 
+} 
+.hero-images { 
+  position: absolute; 
+  inset: 0; 
+} 
+.hero-image-slide { 
+  position: absolute; 
+  inset: 0; 
+  background-size: cover; 
+  background-position: center; 
+  opacity: 0; transition: opacity 1s ease; 
+} 
+.hero-image-slide.actif { 
+  opacity: 1; 
+} 
+.hero-contenu, .hero-points { 
+  position: relative; 
+  z-index: 2; 
+} 
+.hero-fleche { 
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  z-index: 3; 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; 
+  background: rgba(255, 255, 255, 0.85); 
+  color: var(--vert-fonce); 
+  border: none; 
+  font-size: 1.4rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+} 
+.hero-fleche-gauche { 
+  left: 16px; 
+} 
+.hero-fleche-droite { 
+  right: 16px; 
+} 
+.hero-point { 
+  cursor: pointer; 
+}
+
+.hero-contenu {
+  padding: 48px 56px;
+  max-width: 560px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero-titre {
+  font-size: 2.4rem;
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.hero-souligne {
+  color: #a9f0c2;
+}
+
+.hero-texte {
+  font-size: 1rem;
+  opacity: 0.92;
+  margin-bottom: 26px;
+  max-width: 440px;
+}
+
+.hero-points {
+  position: absolute;
+  bottom: 22px;
+  left: 56px;
+  display: flex;
+  gap: 8px;
+}
+
+.hero-point {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.hero-point.actif {
+  background: #fff;
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* En-têtes de section */
+.section {
+  margin-top: 56px;
+}
+
+.section-etiquette {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--vert-vif);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.section-etiquette::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--vert-vif);
+}
+
+.section-entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.section-titre {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.section-soustitre {
+  color: var(--texte-secondaire);
+  margin-top: 6px;
+}
+
+.section-lien {
+  color: var(--vert-vif);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Catégories */
+.grille-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+}
+
+.carte-categorie {
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 20px 12px;
+  text-align: center;
+  background: var(--fond);
+}
+
+.carte-categorie-icone {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--vert-clair);
+  color: var(--vert-fonce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto 12px;
+}
+
+.carte-categorie h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.carte-categorie p {
+  font-size: 0.82rem;
+  color: var(--texte-secondaire);
+  margin-top: 4px;
+}
+
+/* Grilles de cartes (services, réalisations) */
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.carte {
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  background: var(--fond);
+  box-shadow: var(--ombre);
+  display: flex;
+  flex-direction: column;
+}
+
+.carte-image {
+  position: relative;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--vert-clair);
+}
+
+.carte-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--vert-fonce);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.carte-corps {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.carte-corps h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.carte-corps p {
+  font-size: 0.85rem;
+  color: var(--texte-secondaire);
+}
+
+.carte-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--texte-secondaire);
+}
+
+.carte-note {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.carte-note span {
+  color: var(--jaune-etoile);
+}
+
+.carte-bouton {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Prestataires */
+.carte-prestataire {
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 22px 16px;
+  text-align: center;
+  background: var(--fond);
+}
+
+.carte-prestataire-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--vert-clair);
+}
+
+.carte-prestataire h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.carte-prestataire .carte-note {
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.carte-prestataire .carte-meta {
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.carte-prestataire p.metier {
+  font-size: 0.85rem;
+  color: var(--texte-secondaire);
+  margin: 4px 0 12px;
+}
+
+/* Bannière de statistiques */
+.bandeau-stats {
+  margin-top: 64px;
+  background: linear-gradient(120deg, var(--vert-fonce), var(--vert-vif));
+  border-radius: 20px;
+  padding: 36px 40px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  font-size: 1.8rem;
+  display: block;
+}
+
+.stat span {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.bandeau-stats-slogan {
+  font-size: 1.1rem;
+  font-style: italic;
+  max-width: 220px;
+}
+
+ .carte-prestataire-mini { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; margin-bottom: 2px; } 
+  
+  .mini-avatar { 
+     width: 24px; 
+     height: 24px; 
+     border-radius: 50%; 
+     background-color: var(--vert-clair); 
+     background-size: cover; 
+     background-position: center; 
+     color: var(--vert-fonce); 
+     font-size: 0.7rem; 
+     font-weight: 700; 
+     display: flex; 
+     align-items: center; 
+     justify-content: center; 
+     flex-shrink: 0; } 
+     
+     .carte-prestataire-mini span { 
+      font-size: 0.82rem; 
+      font-weight: 600; 
+      color: var(--texte); }
+
+@media (max-width: 700px) {
+  .hero-titre {
+    font-size: 1.8rem;
+  }
+  .hero-contenu {
+    padding: 32px 24px;
+  }
+  .section-entete {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+ @media (max-width: 600px) { 
+  .hero { 
+    min-height: 300px; 
+  } 
+  .hero-contenu { 
+    padding: 24px 20px; 
+    max-width: 100%; 
+  } 
+  .hero-titre { 
+    font-size: 1.5rem; 
+  } 
+  .hero-fleche { 
+    width: 32px; 
+    height: 32px; 
+    font-size: 1.1rem; 
+  } 
+    .section-entete { 
+      flex-direction: column; 
+      align-items: flex-start; 
+      gap: 6px; 
+    } } 
