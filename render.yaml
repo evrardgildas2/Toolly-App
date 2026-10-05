@@ -1,0 +1,25 @@
+services:
+  # 1. Le Backend (API)
+  - type: web
+    name: toolly-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  # 2. Le Frontend (React/Vite)
+  - type: web
+    name: toolly-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: toolly-backend
+          property: host
