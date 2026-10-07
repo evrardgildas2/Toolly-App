@@ -22,6 +22,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--texte);
   background: var(--fond);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -99,11 +100,10 @@ button {
   box-shadow: 0 6px 24px rgba(20, 83, 45, 0.12); 
 }
 
-.entete-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--vert-fonce);
+.entete-logo img {
+  width: 120px;
+  height: auto;
+  background-color: white;
 }
 
 .entete-nav {
@@ -291,8 +291,13 @@ button {
 }
 
  @media (max-width: 600px) { 
-  .conteneur { padding: 0 16px; 
+  .conteneur { 
+    padding: 0 16px;
+    margin-bottom: 0; 
   } 
+  .entete-bande{
+    margin-bottom: 0; 
+}
   .entete-logo { 
     font-size: 1.2rem; 
   } 
@@ -302,31 +307,34 @@ button {
   .recherche-input.ouverte { 
     width: 160px; 
   } 
-  .grille-cartes {
-     grid-template-columns: 1fr 1fr; 
-     gap: 12px; 
-    } 
-    .grille-categories { 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 10px; } 
-      .pied-page-grille { 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-      } 
-      .pied-page-bas { 
-        flex-direction: column; 
-        gap: 6px; 
-        text-align: center; 
-      } 
-      .bandeau-stats { 
-        flex-direction: column; 
-        text-align: center; 
-      } 
-    } 
-       @media (max-width: 420px) { 
-        .grille-cartes { 
-          grid-template-columns: 1fr; 
-        } .grille-categories { 
-          grid-template-columns: repeat(2, 1fr); 
-        } 
-      }
+  .grille-cartes { 
+    display: flex; 
+    overflow-x: auto; 
+    gap: 12px; 
+    padding-bottom: 8px; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; 
+  } 
+  .grille-cartes .carte, .grille-cartes .carte-prestataire { 
+    flex: 0 0 150px; 
+    scroll-snap-align: start; 
+  } 
+  .grille-cartes .carte-image { 
+    height: 65px; 
+  } 
+  .grille-cartes .carte-corps { 
+    padding: 5px; 
+    gap: 4px;
+    height: 60px; 
+  } 
+  .grille-cartes .carte-corps h3 { 
+    font-size: 0.82rem; 
+  } 
+  .grille-categories { 
+    display: flex; 
+    overflow-x: auto; 
+    gap: 10px; 
+    padding-bottom: 8px; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; } .carte-categorie { flex: 0 0 90px; padding: 12px 8px; scroll-snap-align: start; } .carte-categorie-icone { width: 38px; height: 38px; font-size: 1rem; margin-bottom: 8px; } .carte-categorie h3 { font-size: 0.78rem; } .carte-categorie p { font-size: 0.68rem; } .pied-page-grille { grid-template-columns: 1fr; gap: 20px; } .pied-page-bas { flex-direction: column; gap: 6px; text-align: center; } .bandeau-stats { flex-direction: column; text-align: center; } } @media (max-width: 420px) { .grille-cartes .carte, .grille-cartes .carte-prestataire { flex-basis: 130px; } } 
+       

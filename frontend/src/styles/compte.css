@@ -210,10 +210,7 @@
   font-size: 0.8rem;
 }
 
-.profil-actions {
-  display: flex;
-  gap: 10px;
-}
+ .profil-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .profil-actions .bouton-plein {
   background: #fff;
@@ -397,17 +394,7 @@
   height: 100%;
 }
 
-@media (max-width: 900px) {
-  .compte-mise-en-page {
-    grid-template-columns: 1fr;
-  }
-  .compte-barre-laterale {
-    display: none;
-  }
-  .profil-grille {
-    grid-template-columns: 1fr;
-  }
-}
+  .compte-hamburger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; } .compte-fermer-menu { display: none; background: none; border: none; font-size: 1.3rem; align-self: flex-end; margin-bottom: 10px; cursor: pointer; } .compte-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 300; } @media (max-width: 900px) { .compte-mise-en-page { grid-template-columns: 1fr; } .compte-hamburger { display: block; } .compte-recherche { max-width: 260px; } .compte-barre-laterale { position: fixed; top: 0; left: -280px; width: 260px; height: 100vh; background: #fff; z-index: 301; box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15); transition: left 0.3s ease; overflow-y: auto; } .compte-barre-laterale.ouverte { left: 0; } .compte-fermer-menu { display: block; } .profil-grille { grid-template-columns: 1fr; } } @media (max-width: 600px) { .compte-barre-laterale { width: 85vw; left: -85vw; } .compte-barre-laterale.ouverte { left: 0; } .compte-recherche { display: none; } .compte-utilisateur-mini span { display: none; } .compte-contenu { padding: 14px; } } 
 
  @media (max-width: 600px) { 
   .compte-contenu { 
@@ -430,4 +417,15 @@
     } 
     .grille-stats { 
       grid-template-columns: 1fr 1fr; 
-    } }
+    }
+   .liste-actions-rapides-centrees { display: none; }
+   .profil-actions .bouton { 
+    padding: 8px 14px; 
+    font-size: 0.82rem; 
+  } 
+  .profil-nom { 
+    font-size: 1.2rem; 
+  }
+
+  } 
+  

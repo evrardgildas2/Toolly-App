@@ -6,6 +6,7 @@ import homeicon from '../Assets/home.svg';
 import serviceicon from '../Assets/service2.svg';
 import missionicon from '../Assets/book2.svg';
 import discovericon from '../Assets/dicovery.svg';
+import logo_tooly from '../Assets/toolly-logo2.jpeg';
 
 
 function Header() {
@@ -45,7 +46,7 @@ function Header() {
     <div className={`entete-bande ${defile ? 'defile' : ''}`}>
     <header className="entete conteneur">
       <Link to="/" className="entete-logo">
-        Toolly
+        <img src={logo_tooly} alt="Toolly" />
       </Link>
 
          <nav className={`entete-nav ${rechercheOuverte ? 'compact' : ''}`}>
