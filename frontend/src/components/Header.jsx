@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import api from '../services/api'; 
-import searchIcon from '../assets/search.svg';
+import searchIcon from '../Assets/search.svg';
 import homeicon from '../Assets/home.svg';
 import serviceicon from '../Assets/service2.svg';
 import missionicon from '../Assets/book2.svg';

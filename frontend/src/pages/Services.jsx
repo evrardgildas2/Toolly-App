@@ -4,8 +4,8 @@ import api from '../services/api';
 import { EtoileNote, IconeCategorie, formaterPrix } from '../components/UtilsAffichage.jsx';
 import '../styles/accueil.css';
 import '../styles/services.css';
-import searchIcon from '../assets/search.svg';
-import filtericon from '../assets/filter.svg';
+import searchIcon from '../Assets/search.svg';
+import filtericon from '../Assets/filter.svg';
 import locateicon from '../Assets/location.svg';
 import arrowicon from '../Assets/arrow2.svg';
 

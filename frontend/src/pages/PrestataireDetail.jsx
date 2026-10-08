@@ -3,7 +3,7 @@
  import api from '../services/api'; 
  import { EtoileNote, formaterPrix } from '../components/UtilsAffichage.jsx'; 
  import '../styles/accueil.css';
- import locateicon from '../assets/location2.svg';
+ import locateicon from '../Assets/location2.svg';
  
  function PrestataireDetail() { const { id } = useParams(); 
  const [prestataire, setPrestataire] = useState(null); 

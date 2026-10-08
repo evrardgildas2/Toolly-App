@@ -6,14 +6,14 @@ import searchicon from '../Assets/search.svg';
 import homeicon from '../Assets/home.svg';
 import missionicon from '../Assets/book2.svg';
 import discovericon from '../Assets/dicovery.svg';
-import usericon from '../assets/user.svg';
-import missionsicon from '../assets/checklist.svg';
-import favorisicon from '../assets/favorite.svg';
-import messagesicon from '../assets/message.svg';
-import settingsicon from '../assets/settings.svg';
-import notificationsicon from '../assets/notifications.svg';
-import adminicon from '../assets/admin.svg';
-import serviceicon from '../assets/service2.svg';
+import usericon from '../Assets/user.svg';
+import missionsicon from '../Assets/checklist.svg';
+import favorisicon from '../Assets/favorite.svg';
+import messagesicon from '../Assets/message.svg';
+import settingsicon from '../Assets/settings.svg';
+import notificationsicon from '../Assets/notifications.svg';
+import adminicon from '../Assets/admin.svg';
+import serviceicon from '../Assets/service2.svg';
 
 function LayoutCompte({ enfants }) {
   const location = useLocation();

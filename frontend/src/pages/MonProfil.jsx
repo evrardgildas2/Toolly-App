@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { televerserImage } from '../services/upload';
-import locationicon from '../assets/location2.svg';
-import verifiedicon from '../assets/verified.svg';
-import hourglassicon from '../assets/hourglass.svg';
-import warningicon from '../assets/warning.svg';
-import editicon from '../assets/edit.svg';
-import shareicon from '../assets/share.svg';
+import locationicon from '../Assets/location2.svg';
+import verifiedicon from '../Assets/verified.svg';
+import hourglassicon from '../Assets/hourglass.svg';
+import warningicon from '../Assets/warning.svg';
+import editicon from '../Assets/edit.svg';
+import shareicon from '../Assets/share.svg';
 
 const LIBELLES_GENRE = { masculin: 'Masculin', feminin: 'Féminin', autre: 'Autre' };
 
