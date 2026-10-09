@@ -17,9 +17,10 @@ const realisationRoutes = require('./routes/realisationRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const rechercheRoutes = require('./routes/rechercheRoutes');
+const { creerAdminInitial } = require('./utils/seedAdmin'); 
 
 
-connectDB();
+connectDB().then(creerAdminInitial);
 
 const app = express();
 
