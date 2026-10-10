@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/compte.css';
 
@@ -43,8 +44,7 @@ function LayoutAdmin({ enfants }) {
           </Link>
           <Link
             to="/admin/verifications"
-            className={`compte-nav-lien ${estActif('/admin/verifications') ? 'actif' : ''}`}
-          >
+            className={`compte-nav-lien ${estActif('/admin/verifications') ? 'actif' : ''}`} onClick={() => setMenuOuvert(false)}>
              Vérifications
           </Link>
 
