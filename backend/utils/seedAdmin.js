@@ -2,9 +2,14 @@
  require('../models/Administrateur'); 
  // Crée un administrateur au démarrage si les variables ADMIN_* sont définies // et qu'aucun compte n'existe déjà avec cet email. 
  const creerAdminInitial = async () => { const { ADMIN_NOM, ADMIN_EMAIL, ADMIN_MOT_DE_PASSE, ADMIN_TELEPHONE } = process.env; 
- if (!ADMIN_NOM || !ADMIN_EMAIL || !ADMIN_MOT_DE_PASSE || !ADMIN_TELEPHONE) return; 
+  if (!ADMIN_NOM || !ADMIN_EMAIL || !ADMIN_MOT_DE_PASSE || !ADMIN_TELEPHONE) { 
+    console.log('Seed admin ignoré : une ou plusieurs variables ADMIN_* sont absentes'); 
+    return; 
+} 
  try { const existeDeja = await Utilisateur.findOne({ email: ADMIN_EMAIL.toLowerCase() }); 
- if (existeDeja) return; 
+  if (existeDeja) { 
+    console.log(`Seed admin ignoré : un compte existe déjà avec ${ADMIN_EMAIL} (rôle : ${existeDeja.role})`); 
+    return; } 
  const Administrateur = Utilisateur.discriminators['administrateur']; 
  await Administrateur.create({ nom: ADMIN_NOM, email: ADMIN_EMAIL, motDePasse: ADMIN_MOT_DE_PASSE, telephone: ADMIN_TELEPHONE, }); 
  console.log(`Administrateur initial créé : ${ADMIN_EMAIL}`); 
