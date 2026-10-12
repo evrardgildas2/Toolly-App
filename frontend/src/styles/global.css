@@ -298,9 +298,10 @@ button {
   .entete-bande{
     margin-bottom: 0; 
 }
-  .entete-logo { 
-    font-size: 1.2rem; 
+  .entete-logo img{
+    width: 80px;
   } 
+  
   .entete-actions { 
     gap: 8px; 
   } 

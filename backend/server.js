@@ -25,8 +25,8 @@ connectDB().then(creerAdminInitial);
 const app = express();
 
 app.use(cors({
-  origin: 'https://toolly-app-4.onrender.com',
-  credentials: true
+   origin: ['http://localhost:5173', 'https://toolly-app-4.onrender.com'],
+   credentials: true
 }));
 app.use(express.json());
 

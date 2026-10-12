@@ -100,26 +100,17 @@ function Accueil() {
   const [indexHero, setIndexHero] = useState(0);
 
   useEffect(() => {
-    const chargerDonnees = async () => {
-      try {
-        const [resCategories, resServices, resPrestataires, resRealisations, resStats] = await Promise.all([
-          api.get('/categories'),
-          api.get('/services'),
-          api.get('/prestataires?limite=6'),
-          api.get('/realisations'),
-          api.get('/stats/publiques'),
-        ]);
-        setCategories(resCategories.data);
-        setServices(resServices.data.slice(0, 6));
-        setPrestataires(resPrestataires.data);
-        setRealisations(resRealisations.data.slice(0, 4));
-        setStats(resStats.data);
-      } catch (error) {
-        console.error('Erreur lors du chargement de la page Accueil', error);
-      } finally {
-        setChargement(false);
-      }
-    };
+     const chargerDonnees = async () => { 
+      const resultats = await Promise.allSettled([ api.get('/categories'), api.get('/services'), api.get('/prestataires?limite=6'), api.get('/realisations'), api.get('/stats/publiques'), ]); 
+      const [resCategories, resServices, resPrestataires, resRealisations, resStats] = resultats; 
+      if (resCategories.status === 'fulfilled') setCategories(resCategories.value.data); 
+      if (resServices.status === 'fulfilled') setServices(resServices.value.data.slice(0, 6)); 
+      if (resPrestataires.status === 'fulfilled') setPrestataires(resPrestataires.value.data); 
+      if (resRealisations.status === 'fulfilled') setRealisations(resRealisations.value.data.slice(0, 4)); 
+      if (resStats.status === 'fulfilled') setStats(resStats.value.data); 
+      resultats.forEach((r) => { if (r.status === 'rejected') { 
+        console.error('Requête échouée :', r.reason?.config?.url, r.reason?.response?.status); } }); 
+        setChargement(false); }; 
 
     chargerDonnees();
   }, []);
