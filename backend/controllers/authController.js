@@ -134,4 +134,26 @@ const modifierMoi = async (req, res) => {
   }
 };
 
-module.exports = { inscription, connexion, obtenirMoi, modifierMoi };
+// PATCH /api/auth/mot-de-passe // body : { ancienMotDePasse, nouveauMotDePasse } 
+const changerMotDePasse = async (req, res) => { 
+  try { 
+    const { ancienMotDePasse, nouveauMotDePasse } = req.body; 
+    if (!ancienMotDePasse || !nouveauMotDePasse) { 
+       return res.status(400).json({ message: 'Ancien et nouveau mot de passe requis' }); } 
+       if (nouveauMotDePasse.length < 8) { 
+        return res.status(400).json({ message: 'Le nouveau mot de passe doit contenir au moins 8 caractères' }); } 
+        if (ancienMotDePasse === nouveauMotDePasse) { 
+          return res.status(400).json({ message: 'Le nouveau mot de passe doit être différent du précédent' }); } 
+          const utilisateur = await Utilisateur.findById(req.utilisateur.id).select('+motDePasse'); 
+          if (!utilisateur) { return res.status(404).json({ message: 'Utilisateur introuvable' }); } 
+          const ancienValide = await utilisateur.comparerMotDePasse(ancienMotDePasse); 
+          if (!ancienValide) { return res.status(400).json({ message: 'Ancien mot de passe incorrect' }); } 
+          // Le hook pre('save') du modèle hache automatiquement le nouveau mot de passe 
+          utilisateur.motDePasse = nouveauMotDePasse; 
+          await utilisateur.save(); 
+          return res.status(200).json({ message: 'Mot de passe modifié avec succès' }); } 
+          catch (error) { 
+            return res.status(500).json({ message: 'Erreur lors du changement de mot de passe', erreur: error.message }); } }; 
+             
+            module.exports = { inscription, connexion, obtenirMoi, modifierMoi, changerMotDePasse }; 
+

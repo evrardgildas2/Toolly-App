@@ -8,6 +8,7 @@ import hourglassicon from '../Assets/hourglass.svg';
 import warningicon from '../Assets/warning.svg';
 import editicon from '../Assets/edit.svg';
 import shareicon from '../Assets/share.svg';
+import FormulaireMotDePasse from '../components/FormulairemotdePasse.jsx';
 
 const LIBELLES_GENRE = { masculin: 'Masculin', feminin: 'Féminin', autre: 'Autre' };
 
@@ -50,6 +51,7 @@ function MonProfil() {
   const [modeEdition, setModeEdition] = useState(false); 
   const [formulaireEdition, setFormulaireEdition] = useState({});
   const [enregistrementEnCours, setEnregistrementEnCours] = useState(false);
+  const [motDePasseOuvert, setMotDePasseOuvert] = useState(false);
 
   useEffect(() => {
     const charger = async () => {
@@ -362,7 +364,7 @@ function MonProfil() {
                 style={{ display: 'none' }}
               />
             </label>
-            <button> Changer le mot de passe</button>
+            <button onClick={() => setMotDePasseOuvert(true)}> Changer le mot de passe</button>
             <button onClick={seDeconnecter} style={{ color: '#e0453c' }}>
                Déconnexion
             </button>
@@ -380,6 +382,7 @@ function MonProfil() {
           )}
         </div>
       </div>
+       {motDePasseOuvert && ( <FormulaireMotDePasse onFermer={() => setMotDePasseOuvert(false)} /> )} 
     </div>
   );
 }
