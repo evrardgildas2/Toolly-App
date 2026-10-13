@@ -110,7 +110,7 @@ function Accueil() {
       if (resStats.status === 'fulfilled') setStats(resStats.value.data); 
       resultats.forEach((r) => { if (r.status === 'rejected') { 
         console.error('Requête échouée :', r.reason?.config?.url, r.reason?.response?.status); } }); 
-        setChargement(false); }; 
+        setChargement(false); };
 
     chargerDonnees();
   }, []);

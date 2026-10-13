@@ -29,5 +29,10 @@ const marquerCommeLue = async (req, res) => {
     return res.status(500).json({ message: 'Erreur lors de la mise à jour', erreur: error.message });
   }
 };
-
-module.exports = { listerMesNotifications, marquerCommeLue };
+// PATCH /api/notifications/lire-tout 
+    const toutMarquerCommeLu = async (req, res) => { 
+      try { 
+        await Notification.updateMany({ destinataire: req.utilisateur.id, lu: false }, { lu: true }); 
+        return res.status(200).json({ message: 'Toutes les notifications sont marquées comme lues' }); } 
+        catch (error) { return res.status(500).json({ message: 'Erreur lors de la mise à jour', erreur: error.message }); } };
+module.exports = { listerMesNotifications, marquerCommeLue, toutMarquerCommeLu };

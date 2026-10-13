@@ -22,6 +22,7 @@ import Realisations from './pages/Realisations.jsx';
 import Messages from './pages/Messages.jsx'; 
 import Conversation from './pages/Conversation.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
+import Notifications from './pages/Notifications.jsx';
 
 function App() {
   const location = useLocation();
@@ -55,6 +56,7 @@ function App() {
         <Route path="/mon-compte/verification" element={<LayoutCompte enfants={<VerificationPrestataire />} />} />
         <Route path="/mon-compte/messages" element={<LayoutCompte enfants={<Messages />} />} /> 
         <Route path="/mon-compte/messages/:autreUtilisateurId" element={<LayoutCompte enfants={<Conversation />} />} />
+        <Route path="/mon-compte/notifications" element={<LayoutCompte enfants={<Notifications />} />} />
         {/* Mes missions, Mes favoris, Messages, Paramètres, Devenir prestataire : à construire */}
 
         <Route path="/admin" element={<LayoutAdmin enfants={<AdminTableauDeBord />} />} />

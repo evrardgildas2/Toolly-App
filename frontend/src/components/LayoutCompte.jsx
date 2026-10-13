@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import api from '../services/api';
 import '../styles/compte.css';
+import { obtenirSocket } from '../services/socket'; 
 import searchicon from '../Assets/search.svg';
 import homeicon from '../Assets/home.svg';
 import missionicon from '../Assets/book2.svg';
@@ -22,17 +23,20 @@ function LayoutCompte({ enfants }) {
   const [nombreNotificationsNonLues, setNombreNotificationsNonLues] = useState(0);
   const [nombreMessagesNonLus, setNombreMessagesNonLus] = useState(0); 
 
-  useEffect(() => {
-    const chargerNotifications = async () => {
-      try {
-        const reponse = await api.get('/notifications');
-        setNombreNotificationsNonLues(reponse.data.filter((n) => !n.lu).length);
-      } catch (error) {
-        console.error('Erreur lors du chargement des notifications', error);
-      }
-    };
-    chargerNotifications();
-  }, []);
+  useEffect(() => { 
+    const chargerCompteur = async () => { 
+      try { 
+        const reponse = await api.get('/notifications'); 
+        setNombreNotificationsNonLues(reponse.data.filter((n) => !n.lu).length); } 
+        catch (error) { 
+          console.error('Erreur lors du chargement des notifications', error); } }; 
+          chargerCompteur(); window.addEventListener('notifications-changees', chargerCompteur); 
+          const socket = obtenirSocket(); 
+          const gererNouvelle = () => setNombreNotificationsNonLues((n) => n + 1); 
+          socket.on('notification', gererNouvelle); 
+          return () => { 
+            window.removeEventListener('notifications-changees', chargerCompteur); 
+            socket.off('notification', gererNouvelle); }; }, [location.pathname]);
 
    useEffect(() => { 
     api.get('/messages').then((res) => { 
@@ -50,12 +54,7 @@ function LayoutCompte({ enfants }) {
           <input placeholder="Rechercher un service, un prestataire..." />
         </div>
         <div className="compte-barre-haut-droite">
-          <button className="compte-cloche" aria-label="Notifications">
-            <img src={notificationsicon} alt="icone de notifications" />
-            {nombreNotificationsNonLues > 0 && (
-              <span className="compte-badge-cloche">{nombreNotificationsNonLues}</span>
-            )}
-          </button>
+          <Link to="/mon-compte/notifications" className="compte-cloche" aria-label="Notifications"> <img src={notificationsicon} alt="icone de notifications" /> </Link>
           <Link to="/mon-compte/messages" className="compte-cloche" aria-label="Messages"> <img src={messagesicon} alt="" /> {nombreMessagesNonLus > 0 && <span className="compte-badge-cloche">{nombreMessagesNonLus}</span>} </Link>
           <div className="compte-utilisateur-mini">
             <div

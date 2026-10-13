@@ -202,7 +202,7 @@ function MonProfil() {
         </div>
       )}
         {modeEdition && ( <div className="bloc-info" style={{ marginTop: 16 }}> 
-          <div className="bloc-info-entete"><span>✏️ Modifier mes informations</span>
+          <div className="bloc-info-entete"><span> Modifier mes informations</span>
           </div> <form onSubmit={enregistrerEdition} style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 420 }}> 
             <label>Nom complet <input value={formulaireEdition.nom} onChange={(e) => setFormulaireEdition({ ...formulaireEdition, nom: e.target.value })} /> </label> 
             <label>Téléphone <input value={formulaireEdition.telephone} onChange={(e) => setFormulaireEdition({ ...formulaireEdition, telephone: e.target.value })} /> </label> 
