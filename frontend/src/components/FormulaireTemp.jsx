@@ -20,9 +20,9 @@
                 return ( 
                   <div className="modal-fond" onClick={onFermer}> 
                   <div className="modal-carte" onClick={(e) => e.stopPropagation()}> 
-                    <div className="bloc-info-entete"> <span>🔒 Changer le mot de passe</span> 
+                    <div className="bloc-info-entete"> <span> Changer le mot de passe</span> 
                     <button type="button" onClick={onFermer} aria-label="Fermer">✕</button> </div> 
-                    {succes ? ( <p>✅ Mot de passe modifié avec succès.</p> ) : ( 
+                    {succes ? ( <p> Mot de passe modifié avec succès.</p> ) : ( 
                         <form className="formulaire-auth" onSubmit={gererEnvoi}> 
                         <label> Ancien mot de passe <input type="password" value={ancien} onChange={(e) => setAncien(e.target.value)} autoComplete="current-password" required /> </label> 
                         <label> Nouveau mot de passe <input type="password" value={nouveau} onChange={(e) => setNouveau(e.target.value)} autoComplete="new-password" required /> </label> 
