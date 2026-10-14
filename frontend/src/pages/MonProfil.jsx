@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
-import FormulaireMotDePasse from '../components/FormulairemotdePasse.jsx';
+import FormulaireMotDePasse from '../components/FormulaireTemp.jsx';
 import { televerserImage } from '../services/upload';
 import locationicon from '../Assets/location2.svg';
 import verifiedicon from '../Assets/verified.svg';
