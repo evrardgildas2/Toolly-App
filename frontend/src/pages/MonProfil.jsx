@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import FormulaireMotDePasse from '../components/FormulairemotdePasse.jsx';
 import { televerserImage } from '../services/upload';
 import locationicon from '../Assets/location2.svg';
 import verifiedicon from '../Assets/verified.svg';
@@ -8,7 +9,6 @@ import hourglassicon from '../Assets/hourglass.svg';
 import warningicon from '../Assets/warning.svg';
 import editicon from '../Assets/edit.svg';
 import shareicon from '../Assets/share.svg';
-import FormulaireMotDePasse from '../components/FormulairemotdePasse.jsx';
 
 const LIBELLES_GENRE = { masculin: 'Masculin', feminin: 'Féminin', autre: 'Autre' };
 
