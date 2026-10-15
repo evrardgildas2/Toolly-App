@@ -23,12 +23,8 @@ function LayoutAdmin({ enfants }) {
         <strong style={{ color: 'var(--vert-fonce)' }}>Administration</strong>
         <div className="compte-barre-haut-droite">
           <div className="compte-utilisateur-mini">
-            <div className="entete-avatar">{utilisateur?.nom?.charAt(0).toUpperCase()}</div>
-            {utilisateur?.nom}
+            <div className="entete-avatar">{!utilisateur.photo && utilisateur.nom?.charAt(0).toUpperCase()}</div>
           </div>
-          <button className="bouton bouton-contour" onClick={seDeconnecter}>
-            Déconnexion
-          </button>
         </div>
       </div>
 
