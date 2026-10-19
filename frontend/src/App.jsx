@@ -23,6 +23,7 @@ import Messages from './pages/Messages.jsx';
 import Conversation from './pages/Conversation.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import Notifications from './pages/Notifications.jsx';
+import Parametres from './pages/Parametres.jsx';
 
 function App() {
   const location = useLocation();
@@ -57,6 +58,7 @@ function App() {
         <Route path="/mon-compte/messages" element={<LayoutCompte enfants={<Messages />} />} /> 
         <Route path="/mon-compte/messages/:autreUtilisateurId" element={<LayoutCompte enfants={<Conversation />} />} />
         <Route path="/mon-compte/notifications" element={<LayoutCompte enfants={<Notifications />} />} />
+        <Route path="/mon-compte/parametres" element={<LayoutCompte enfants={<Parametres />} />} />
         {/* Mes missions, Mes favoris, Messages, Paramètres, Devenir prestataire : à construire */}
 
         <Route path="/admin" element={<LayoutAdmin enfants={<AdminTableauDeBord />} />} />
