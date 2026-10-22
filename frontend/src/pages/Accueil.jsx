@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../services/api';
 import { EtoileNote, IconeCategorie, formaterPrix } from '../components/UtilsAffichage.jsx';
 import '../styles/accueil.css';
+import ToollyLoader from '../ToollyLoader.jsx';
 import locateicon from '../Assets/location.svg'
 import arrowicon from '../Assets/arrow2.svg'
 import arrowicon2 from '../Assets/arrow3.svg'
@@ -125,6 +126,10 @@ function Accueil() {
   // Nombre de services par catégorie, calculé côté client à partir des services actifs
   const compterServicesParCategorie = (categorieId) =>
     services.filter((s) => s.categorie?._id === categorieId).length;
+
+  if (chargement) {
+  return <ToollyLoader />;
+}
 
   return (
     <>
