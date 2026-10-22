@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import '../styles/auth.css';
 
@@ -9,6 +9,8 @@ function Connexion() {
   const [erreur, setErreur] = useState('');
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const navigate = useNavigate();
+  const [parametres] = useSearchParams();
+  const sessionExpiree = parametres.get('session') === 'expiree';
 
   const gererConnexion = async (e) => {
     e.preventDefault();
@@ -30,6 +32,10 @@ function Connexion() {
     <div className="page-auth">
       <h1>Connexion</h1>
       <p className="page-auth-soustitre">Content de vous revoir sur Toolly.</p>
+
+      {sessionExpiree && (
+  <p className="message-info">Votre session a expiré. Veuillez vous reconnecter.</p>
+)}
 
       <form className="formulaire-auth" onSubmit={gererConnexion}>
         <label>

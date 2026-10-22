@@ -96,3 +96,12 @@
   color: var(--vert-vif);
   font-weight: 600;
 }
+
+.message-info {
+  background: var(--vert-clair);
+  color: var(--vert-fonce);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
