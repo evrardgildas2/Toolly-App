@@ -10,10 +10,13 @@ function Connexion() {
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const navigate = useNavigate();
   const [parametres] = useSearchParams();
-  const sessionExpiree = parametres.get('session') === 'expiree';
+const [afficherSessionExpiree, setAfficherSessionExpiree] = useState(
+  parametres.get('session') === 'expiree'
+);
 
   const gererConnexion = async (e) => {
     e.preventDefault();
+    setAfficherSessionExpiree(false);
     setErreur('');
     setEnvoiEnCours(true);
     try {
@@ -33,7 +36,7 @@ function Connexion() {
       <h1>Connexion</h1>
       <p className="page-auth-soustitre">Content de vous revoir sur Toolly.</p>
 
-      {sessionExpiree && (
+      {afficherSessionExpiree && (
   <p className="message-info">Votre session a expiré. Veuillez vous reconnecter.</p>
 )}
 

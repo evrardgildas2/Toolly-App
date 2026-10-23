@@ -1,5 +1,6 @@
-import ".styles/ToollyLoader.css";
 import logo from "./logo/logo-Toolly2.png";
+import './ToollyLoader.css';
+
 
 export default function ToollyLoader(){
     return (

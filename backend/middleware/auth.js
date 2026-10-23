@@ -14,8 +14,11 @@ const proteger = (req, res, next) => {
     const decode = jwt.verify(token, process.env.JWT_SECRET);
     req.utilisateur = decode; // { id, role }
     next();
-  } catch (error) {
-    return res.status(401).json({ message: 'Token invalide ou expiré' });
+  }   catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Session expirée' });
+    }
+    return res.status(401).json({ message: 'Token invalide' });
   }
 };
 

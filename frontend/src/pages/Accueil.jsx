@@ -101,17 +101,67 @@ function Accueil() {
   const [indexHero, setIndexHero] = useState(0);
 
   useEffect(() => {
-     const chargerDonnees = async () => { 
-      const resultats = await Promise.allSettled([ api.get('/categories'), api.get('/services'), api.get('/prestataires?limite=6'), api.get('/realisations'), api.get('/stats/publiques'), ]); 
-      const [resCategories, resServices, resPrestataires, resRealisations, resStats] = resultats; 
-      if (resCategories.status === 'fulfilled') setCategories(resCategories.value.data); 
-      if (resServices.status === 'fulfilled') setServices(resServices.value.data.slice(0, 6)); 
-      if (resPrestataires.status === 'fulfilled') setPrestataires(resPrestataires.value.data); 
-      if (resRealisations.status === 'fulfilled') setRealisations(resRealisations.value.data.slice(0, 4)); 
-      if (resStats.status === 'fulfilled') setStats(resStats.value.data); 
-      resultats.forEach((r) => { if (r.status === 'rejected') { 
-        console.error('Requête échouée :', r.reason?.config?.url, r.reason?.response?.status); } }); 
-        setChargement(false); };
+     
+const chargerDonnees = async () => {
+  const debutChargement = Date.now();
+
+  try {
+    const resultats = await Promise.allSettled([
+      api.get('/categories'),
+      api.get('/services'),
+      api.get('/prestataires?limite=6'),
+      api.get('/realisations'),
+      api.get('/stats/publiques'),
+    ]);
+
+    const [
+      resCategories,
+      resServices,
+      resPrestataires,
+      resRealisations,
+      resStats,
+    ] = resultats;
+
+    if (resCategories.status === 'fulfilled') {
+      setCategories(resCategories.value.data);
+    }
+
+    if (resServices.status === 'fulfilled') {
+      setServices(resServices.value.data.slice(0, 6));
+    }
+
+    if (resPrestataires.status === 'fulfilled') {
+      setPrestataires(resPrestataires.value.data);
+    }
+
+    if (resRealisations.status === 'fulfilled') {
+      setRealisations(resRealisations.value.data.slice(0, 4));
+    }
+
+    if (resStats.status === 'fulfilled') {
+      setStats(resStats.value.data);
+    }
+
+    resultats.forEach((r) => {
+      if (r.status === 'rejected') {
+        console.error(
+          'Requête échouée :',
+          r.reason?.config?.url,
+          r.reason?.response?.status
+        );
+      }
+    });
+  } finally {
+    const duree = Date.now() - debutChargement;
+    const dureeMinimale = 2500;
+    const tempsRestant = Math.max(0, dureeMinimale - duree);
+
+    setTimeout(() => {
+      setChargement(false);
+    }, tempsRestant);
+  }
+};
+
 
     chargerDonnees();
   }, []);
