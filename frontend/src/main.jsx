@@ -2,11 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
-import { tokenEstExpire, viderSession } from './services/session';
 
-if (localStorage.getItem('token') && tokenEstExpire()) {
-  viderSession();
-}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
