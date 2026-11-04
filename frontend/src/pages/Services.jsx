@@ -9,7 +9,7 @@ import filtericon from '../Assets/filter.svg';
 import locateicon from '../Assets/location.svg';
 import arrowicon from '../Assets/arrow2.svg';
 import SkeletonService from '../components/SkeletonService.jsx';
-import '../styles/skeleton-service.css';  
+import '../styles/skeleton-services.css';  
 
  
 
