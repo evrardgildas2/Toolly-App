@@ -8,6 +8,8 @@ import searchIcon from '../Assets/search.svg';
 import filtericon from '../Assets/filter.svg';
 import locateicon from '../Assets/location.svg';
 import arrowicon from '../Assets/arrow2.svg';
+import SkeletonService from '../components/SkeletonService.jsx';
+import '../styles/skeleton-service.css';  
 
  
 
@@ -177,6 +179,7 @@ function Services() {
   const nombrePages = Math.max(1, Math.ceil(servicesFiltres.length / TAILLE_PAGE));
   const servicesPage = servicesFiltres.slice((page - 1) * TAILLE_PAGE, page * TAILLE_PAGE);
 
+
   return (
     <div className="conteneur">
       <section className={`hero-services ${!heroVisible ? 'cachee' : ''}`} ref={heroRef}>
@@ -321,12 +324,31 @@ function Services() {
             </select>
           </div>
 
-          <div className="grille-cartes">
-            {servicesPage.map((service) => (
-              <CarteServiceComplete key={service._id} service={service} />
-            ))}
-            {!chargement && servicesFiltres.length === 0 && <p>Aucun service ne correspond à ces critères.</p>}
-          </div>
+          
+   
+
+          
+<div className="grille-cartes">
+  {chargement ? (
+    Array.from({ length: 6 }).map((_, index) => (
+      <SkeletonService key={index} />
+    ))
+  ) : (
+    <>
+      {servicesPage.map((service) => (
+        <CarteServiceComplete
+          key={service._id}
+          service={service}
+        />
+      ))}
+
+      {servicesFiltres.length === 0 && (
+        <p>Aucun service ne correspond à ces critères.</p>
+      )}
+    </>
+  )}
+</div>
+
 
           {nombrePages > 1 && (
             <div className="pagination">
