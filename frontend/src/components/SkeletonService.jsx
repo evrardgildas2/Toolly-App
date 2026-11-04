@@ -1,5 +1,5 @@
 
-import '../styles/loader.css';
+import '../styles/skeleton-service.css';
 
 export default function SkeletonService({ type = 'service' }) {
   if (type === 'prestataire') {
