@@ -87,22 +87,42 @@ function Services() {
 
   useEffect(() => {
     const charger = async () => {
-      try {
-        const [resCategories, resServices] = await Promise.all([api.get('/categories'), api.get('/services')]);
-        setCategories(resCategories.data);
-        setServices(resServices.data);
-        const categorieDepuisUrl = parametresUrl.get('categorie'); 
-        if (categorieDepuisUrl) { setCategoriesSelectionnees([categorieDepuisUrl]); } 
-        const rechercheDepuisUrl = parametresUrl.get('recherche'); 
-        if (rechercheDepuisUrl) { setRecherche(rechercheDepuisUrl); }
-      } catch (error) {
-        console.error('Erreur lors du chargement des services', error);
-      } finally {
-        setChargement(false);
+    const debutChargement = Date.now();
+
+    try {
+      const [resCategories, resServices] = await Promise.all([
+        api.get('/categories'),
+        api.get('/services')
+      ]);
+
+      setCategories(resCategories.data);
+      setServices(resServices.data);
+
+      const categorieDepuisUrl = parametresUrl.get('categorie');
+      if (categorieDepuisUrl) {
+        setCategoriesSelectionnees([categorieDepuisUrl]);
       }
-    };
-    charger();
-  }, []);
+
+      const rechercheDepuisUrl = parametresUrl.get('recherche');
+      if (rechercheDepuisUrl) {
+        setRecherche(rechercheDepuisUrl);
+      }
+
+    } catch (error) {
+      console.error('Erreur lors du chargement des services', error);
+
+    } finally {
+      const duree = Date.now() - debutChargement;
+      const attente = Math.max(0, 800 - duree);
+
+      await new Promise(resolve => setTimeout(resolve, attente));
+
+      setChargement(false);
+    }
+  };
+
+  charger();
+}, []);
 
   const villesDisponibles = useMemo(() => {
     const villes = services.map((s) => s.prestataire?.ville).filter(Boolean);

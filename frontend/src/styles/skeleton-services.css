@@ -1,10 +1,17 @@
 
-.skeleton-service {
+/* Carte skeleton */
+.skeleton-carte {
+  width: 100%;
+  min-width: 0;
   overflow: hidden;
+  background: #fff;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
   pointer-events: none;
 }
 
-.skeleton-animation {
+/* Animation */
+.skeleton {
   background: linear-gradient(
     90deg,
     #eeeeee 25%,
@@ -16,50 +23,42 @@
   border-radius: 7px;
 }
 
+/* Image */
 .skeleton-image {
   width: 100%;
   height: 190px;
   border-radius: 0;
 }
 
+/* Corps de la carte */
 .skeleton-corps {
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 13px;
 }
 
-.skeleton-ligne {
-  height: 12px;
+/* Badge catégorie */
+.skeleton-badge {
+  width: 75px;
+  height: 20px;
 }
 
+/* Titre */
 .skeleton-titre {
   width: 75%;
   height: 19px;
 }
 
-.skeleton-prestataire {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.skeleton-avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.skeleton-nom {
-  width: 45%;
-}
-
-.skeleton-localisation {
+/* Informations */
+.skeleton-ligne {
   width: 55%;
+  height: 12px;
 }
 
-.skeleton-etoiles {
+.skeleton-note {
   width: 35%;
+  height: 13px;
 }
 
 .skeleton-prix {
@@ -67,6 +66,7 @@
   height: 17px;
 }
 
+/* Bouton */
 .skeleton-bouton {
   width: 100%;
   height: 40px;
@@ -74,6 +74,24 @@
   border-radius: 8px;
 }
 
+/* Skeleton prestataire : pour une utilisation future */
+.skeleton-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.skeleton-nom {
+  width: 60%;
+  height: 15px;
+}
+
+.skeleton-metier {
+  width: 50%;
+  height: 12px;
+}
+
+/* Animation lumineuse */
 @keyframes skeleton-shimmer {
   0% {
     background-position: 200% 0;
