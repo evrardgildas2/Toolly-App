@@ -41,7 +41,7 @@ function CarteService({ service }) {
         {service.prestataire?.ville && <div className="carte-meta"><img src={locateicon} alt="" /> {service.prestataire.ville}</div>}
         <EtoileNote note={service.prestataire?.noteMoyenne} nombreAvis={service.prestataire?.nombreAvis} />
         {service.prestataire?.nombreMissionsTerminees > 0 && (
-          <div className="carte-meta">✔️ {service.prestataire.nombreMissionsTerminees} mission
+          <div className="carte-meta"> {service.prestataire.nombreMissionsTerminees} mission
             {service.prestataire.nombreMissionsTerminees > 1 ? 's' : ''} terminée
             {service.prestataire.nombreMissionsTerminees > 1 ? 's' : ''}</div>
         )}

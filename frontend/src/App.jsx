@@ -24,6 +24,7 @@ import Conversation from './pages/Conversation.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import Notifications from './pages/Notifications.jsx';
 import Parametres from './pages/Parametres.jsx';
+import BarreNavigationMobile from './components/BarreNavigationMobile.jsx';
 
 function App() {
   const location = useLocation();
@@ -67,6 +68,7 @@ function App() {
       </Routes>
 
       {afficherFooter && <Footer />}
+      {!dansEspaceAdmin && <BarreNavigationMobile />}
     </>
   );
 }
