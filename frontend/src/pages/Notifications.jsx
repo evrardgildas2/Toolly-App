@@ -17,7 +17,16 @@ const ICONES = { nouvelle_demande_mission: <img src={workicon} alt="" />, missio
 const cibleNotification = (notification) => { 
     switch (notification.type) { 
         case 'nouveau_message': return '/mon-compte/messages'; 
-        case 'nouvelle_notation': return '/mon-compte'; default: return null; } }; 
+        case 'nouvelle_notation': return '/mon-compte'; 
+        case 'nouvelle_demande_mission':
+        case 'mission_acceptee':
+        case 'mission_refusee':
+        case 'mission_demarree':
+        case 'confirmation_attendue':
+        case 'mission_terminee':
+        case 'mission_annulee':
+      return '/mon-compte/missions';
+        default: return null; } }; 
         const tempsRelatif = (dateIso) => { 
             const secondes = Math.floor((Date.now() - new Date(dateIso).getTime()) / 1000); 
             if (secondes < 60) return "À l'instant"; 

@@ -25,6 +25,7 @@ import ServiceDetail from './pages/ServiceDetail.jsx';
 import Notifications from './pages/Notifications.jsx';
 import Parametres from './pages/Parametres.jsx';
 import BarreNavigationMobile from './components/BarreNavigationMobile.jsx';
+import Missions from './pages/Missions.jsx';
 
 function App() {
   const location = useLocation();
@@ -60,6 +61,7 @@ function App() {
         <Route path="/mon-compte/messages/:autreUtilisateurId" element={<LayoutCompte enfants={<Conversation />} />} />
         <Route path="/mon-compte/notifications" element={<LayoutCompte enfants={<Notifications />} />} />
         <Route path="/mon-compte/parametres" element={<LayoutCompte enfants={<Parametres />} />} />
+        <Route path="/mon-compte/missions" element={<LayoutCompte enfants={<Missions />} />} />
         {/* Mes missions, Mes favoris, Messages, Paramètres, Devenir prestataire : à construire */}
 
         <Route path="/admin" element={<LayoutAdmin enfants={<AdminTableauDeBord />} />} />

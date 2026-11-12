@@ -450,6 +450,196 @@
   font-weight: 600;
 }
 
+.missions-page {
+  max-width: 760px;
+}
+
+.filtres-missions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.filtre-puce {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.filtre-puce.actif {
+  background: var(--vert-vif);
+  border-color: var(--vert-vif);
+  color: #fff;
+}
+
+.mission-carte {
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 18px;
+  margin-bottom: 16px;
+  background: #fff;
+}
+
+.mission-entete {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.mission-miniature {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-color: var(--vert-clair);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.mission-infos {
+  flex: 1;
+  min-width: 0;
+}
+
+.mission-infos h3 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.mission-meta {
+  font-size: 0.84rem;
+  color: var(--texte-secondaire);
+  margin: 2px 0;
+}
+
+.badge-statut {
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-statut.en_attente { background: #fff4e0; color: #b26a00; }
+.badge-statut.acceptee { background: var(--vert-clair); color: var(--vert-fonce); }
+.badge-statut.en_cours { background: var(--vert-vif); color: #fff; }
+.badge-statut.terminee { background: var(--vert-fonce); color: #fff; }
+.badge-statut.refusee,
+.badge-statut.annulee { background: #fdecea; color: #c0392b; }
+
+.mission-progression {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 14px 0 6px;
+}
+
+.etape-mission {
+  font-size: 0.72rem;
+  color: var(--texte-secondaire);
+}
+
+.etape-mission::before {
+  content: '';
+  display: block;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--bordure);
+  margin-bottom: 5px;
+}
+
+.etape-mission.faite {
+  color: var(--vert-fonce);
+  font-weight: 600;
+}
+
+.etape-mission.faite::before {
+  background: var(--vert-vif);
+}
+
+.mission-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.bouton-danger {
+  background: transparent;
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+.bouton-danger:hover {
+  background: #fdecea;
+}
+
+.mission-formulaire {
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--fond-alterne);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mission-formulaire label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.mission-formulaire input,
+.mission-formulaire textarea {
+  padding: 9px 12px;
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.etoiles {
+  display: flex;
+  gap: 4px;
+}
+
+.etoiles button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1.7rem;
+  color: var(--bordure);
+  cursor: pointer;
+}
+
+.etoiles button.active {
+  color: var(--jaune-etoile);
+}
+
+@media (max-width: 600px) {
+  .mission-miniature {
+    width: 52px;
+    height: 52px;
+  }
+  .mission-entete {
+    flex-wrap: wrap;
+  }
+  .mission-actions .bouton {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 9px 14px;
+  }
+}
+
  @media (max-width: 600px) { 
   .compte-contenu { 
     padding: 16px; } 
