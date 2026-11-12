@@ -2,6 +2,7 @@ const Mission = require('../models/Mission');
 const Service = require('../models/Service');
 const Prestataire = require('../models/Prestataire');
 const { creerEtEnvoyerNotification } = require('../utils/notifier');
+const Notation = require('../models/Notation');
 
 const POURCENTAGE_COMMISSION = 0.1; // 10% — ajustable plus tard selon la classification
 
@@ -39,6 +40,7 @@ const demanderMission = async (req, res) => {
 
 // GET /api/missions/mes-missions
 // Pour un client ou un prestataire : ses propres missions
+// GET /api/missions/mes-missions
 const listerMesMissions = async (req, res) => {
   try {
     const filtre =
@@ -48,9 +50,16 @@ const listerMesMissions = async (req, res) => {
       .populate('service', 'titre prixMin photo')
       .populate('client', 'nom photo')
       .populate('prestataire', 'nom photo')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .lean();
 
-    return res.status(200).json(missions);
+    // Indique pour chaque mission si elle a déjà été notée
+    const notations = await Notation.find({ mission: { $in: missions.map((m) => m._id) } }).select('mission');
+    const idsNotees = new Set(notations.map((n) => n.mission.toString()));
+
+    return res
+      .status(200)
+      .json(missions.map((m) => ({ ...m, dejaNotee: idsNotees.has(m._id.toString()) })));
   } catch (error) {
     return res.status(500).json({ message: 'Erreur lors de la récupération des missions', erreur: error.message });
   }
@@ -227,9 +236,9 @@ const confirmerFinMission = async (req, res) => {
 // Le client ou le prestataire peut annuler (version simple, sans questionnaire de motifs — voir Phase 2)
 const annulerMission = async (req, res) => {
   try {
-    const mission = await Mission.findById(req.params.id);
-    if (!mission) {
-      return res.status(404).json({ message: 'Mission introuvable' });
+    
+    if (!estClient) {
+      await Prestataire.findByIdAndUpdate(mission.prestataire, { $inc: { nombreMissionsAnnulees: 1 } });
     }
 
     const { appartient } = verifierAppartenance(mission, req.utilisateur);
