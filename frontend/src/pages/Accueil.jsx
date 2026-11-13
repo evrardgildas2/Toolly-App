@@ -17,13 +17,13 @@ import hero5 from '../Assets/hero/hero5.jpg';
 
 function CarteCategorie({ categorie, index, nombreServices }) {
   return (
-    <div className="carte-categorie">
+    <Link to={`/categories/${categorie._id}`} className="carte-categorie">
       <div className="carte-categorie-icone">
         <IconeCategorie icone={categorie.icone} index={index} />
       </div>
       <h3>{categorie.nom}</h3>
       <p>{nombreServices} service{nombreServices > 1 ? 's' : ''}</p>
-    </div>
+    </Link>
   );
 }
 
@@ -212,7 +212,7 @@ const chargerDonnees = async () => {
             </Link>
           </div>
           <div className="grille-categories">
-            {categories.map((categorie, index) => (
+            {categories.slice(0, 6).map((categorie, index) => (
               <CarteCategorie
                 key={categorie._id}
                 categorie={categorie}
