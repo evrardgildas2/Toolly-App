@@ -2,6 +2,7 @@ const express = require('express');
 const { proteger, autoriserRoles } = require('../middleware/auth');
 const {
   listerCategories,
+  obtenirCategorie,
   creerCategorie,
   proposerCategorie,
   listerCategoriesEnAttente,
@@ -22,5 +23,8 @@ router.patch('/:id/rejeter', proteger, autoriserRoles('administrateur'), rejeter
 
 // Prestataire
 router.post('/proposer', proteger, autoriserRoles('prestataire'), proposerCategorie);
+
+// Public, après /en-attente pour ne pas l'intercepter
+router.get('/:id', obtenirCategorie);
 
 module.exports = router;

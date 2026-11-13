@@ -2,11 +2,11 @@ export const ICONES_PAR_DEFAUT = ['🏠', '🚗', '💻', '💇', '🛠️', '�
 
 // Une catégorie peut avoir soit un emoji simple (texte), soit une vraie image
 // uploadée (URL Cloudinary) — on distingue les deux pour l'afficher correctement.
-export function IconeCategorie({ icone, index }) {
+export function IconeCategorie({ icone, index, taille = 28 }) {
   const estUneUrl = icone && /^https?:\/\//.test(icone);
 
   if (estUneUrl) {
-    return <img src={icone} alt="" style={{ width: 28, height: 28, objectFit: 'contain' }} />;
+    return <img src={icone} alt="" style={{ width: taille, height: taille, objectFit: 'contain' }} />;
   }
 
   return <>{icone || ICONES_PAR_DEFAUT[index % ICONES_PAR_DEFAUT.length]}</>;

@@ -98,11 +98,29 @@ const rejeterCategorie = async (req, res) => {
     return res.status(500).json({ message: 'Erreur lors du rejet', erreur: error.message });
   }
 };
+// GET /api/categories/:id
+// Public : une catégorie approuvée
+const obtenirCategorie = async (req, res) => {
+  try {
+    const categorie = await Categorie.findOne({ _id: req.params.id, statut: 'approuvee' });
+    if (!categorie) {
+      return res.status(404).json({ message: 'Catégorie introuvable' });
+    }
+    return res.status(200).json(categorie);
+  } catch (error) {
+    // Un identifiant mal formé (adresse tapée à la main) est traité comme "introuvable"
+    if (error.name === 'CastError') {
+      return res.status(404).json({ message: 'Catégorie introuvable' });
+    }
+    return res.status(500).json({ message: 'Erreur lors de la récupération de la catégorie', erreur: error.message });
+  }
+};
 
 module.exports = {
   listerCategories,
   creerCategorie,
   proposerCategorie,
+  obtenirCategorie,
   listerCategoriesEnAttente,
   approuverCategorie,
   rejeterCategorie,
