@@ -22,7 +22,7 @@
                       {filtres.map((prestataire) => ( <div className="carte-prestataire" key={prestataire._id}> <div className="carte-prestataire-avatar" style={prestataire.photo ? { backgroundImage: `url(${prestataire.photo})` } : undefined} /> 
                       <h3>{prestataire.nom}</h3> 
                       <EtoileNote note={prestataire.noteMoyenne} nombreAvis={prestataire.nombreAvis} /> 
-                      {prestataire.ville && <div className="carte-meta">📍 {prestataire.ville}</div>} 
+                      {prestataire.ville && <div className="carte-meta"> {prestataire.ville}</div>} 
                       <p className="metier">{prestataire.metier || prestataire.categories?.[0]?.nom || 'Prestataire'}</p> 
                       <Link to={`/prestataires/${prestataire._id}`} className="bouton bouton-plein">Voir profil</Link> </div> ))} {filtres.length === 0 && <p>Aucun prestataire trouvé.</p>} </div> )} </div> ); } 
                       export default Prestataires;
