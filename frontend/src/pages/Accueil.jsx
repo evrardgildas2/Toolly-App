@@ -128,10 +128,9 @@ const chargerDonnees = async () => {
     }
 
     if (resServices.status === 'fulfilled') {
-      setServices(resServices.value.data.slice(0, 6));
-      setTousLesServices(resServices.value.data);   // version avec Promise.allSettled (dans le bloc if)
-      setTousLesServices(resServices.data);         // version avec Promise.all
-    }
+     setServices(resServices.value.data.slice(0, 6));
+     setTousLesServices(resServices.value.data);
+}
 
     if (resPrestataires.status === 'fulfilled') {
       setPrestataires(resPrestataires.value.data);
@@ -178,7 +177,8 @@ const chargerDonnees = async () => {
 
   // Nombre de services par catégorie, calculé côté client à partir des services actifs
   const compterServicesParCategorie = (categorieId) =>
-  tousLesServices.filter((s) => s.categorie?._id === categorieId).length;
+  (tousLesServices || []).filter((s) => s.categorie?._id === categorieId).length;
+  
   if (chargement) {
   return <ToollyLoader />;
 }
