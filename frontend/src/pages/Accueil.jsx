@@ -99,6 +99,7 @@ function Accueil() {
   const [stats, setStats] = useState(null);
   const [chargement, setChargement] = useState(true);
   const [indexHero, setIndexHero] = useState(0);
+  const [tousLesServices, setTousLesServices] = useState([]);
 
   useEffect(() => {
      
@@ -128,6 +129,8 @@ const chargerDonnees = async () => {
 
     if (resServices.status === 'fulfilled') {
       setServices(resServices.value.data.slice(0, 6));
+      setTousLesServices(resServices.value.data);   // version avec Promise.allSettled (dans le bloc if)
+      setTousLesServices(resServices.data);         // version avec Promise.all
     }
 
     if (resPrestataires.status === 'fulfilled') {
@@ -175,8 +178,7 @@ const chargerDonnees = async () => {
 
   // Nombre de services par catégorie, calculé côté client à partir des services actifs
   const compterServicesParCategorie = (categorieId) =>
-    services.filter((s) => s.categorie?._id === categorieId).length;
-
+  tousLesServices.filter((s) => s.categorie?._id === categorieId).length;
   if (chargement) {
   return <ToollyLoader />;
 }

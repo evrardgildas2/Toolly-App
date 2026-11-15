@@ -15,7 +15,7 @@ function Categories() {
                <div className="conteneur" style={{ marginTop: 32, marginBottom: 48 }}> 
                <h1 className="section-titre" style={{ marginBottom: 20 }}>Toutes les catégories</h1> 
                {chargement ? ( <p>Chargement...</p> ) : ( <div className="grille-categories"> 
-                {categories.map((categorie, index) => ( <Link to={`/services?categorie=${categorie._id}`} className="carte-categorie" key={categorie._id}>
+                {categories.map((categorie, index) => ( <Link to={`/categories/${categorie._id}`} className="carte-categorie" key={categorie._id}>
                  <div className="carte-categorie-icone"> 
                     <IconeCategorie icone={categorie.icone} index={index} /> 
                     </div> 

@@ -26,6 +26,7 @@ import Notifications from './pages/Notifications.jsx';
 import Parametres from './pages/Parametres.jsx';
 import BarreNavigationMobile from './components/BarreNavigationMobile.jsx';
 import Missions from './pages/Missions.jsx';
+import CategorieDetail from './pages/CategorieDetail.jsx';
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/mon-compte/proposer-service" element={<LayoutCompte enfants={<ProposerService />} />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:id" element={<CategorieDetail />} />
         <Route path="/prestataires" element={<Prestataires />} />
         <Route path="/prestataires/:id" element={<PrestataireDetail />} />
         <Route path="/realisations/:id" element={<RealisationDetail />} />
