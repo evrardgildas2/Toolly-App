@@ -21,12 +21,38 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #e8edd8;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23c8d8b0'/%3E%3Cstop offset='100%25' stop-color='%23f0f0e0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1440' height='900' fill='url(%23g1)'/%3E%3Cpath d='M0,600 C300,500 600,700 900,550 C1200,400 1440,600 1440,600 L1440,900 L0,900 Z' fill='%23b8cc9a' opacity='0.4'/%3E%3Cpath d='M0,700 C400,600 800,800 1440,650 L1440,900 L0,900 Z' fill='%23a8c088' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='180' fill='%23d0e0b8' opacity='0.3'/%3E%3Ccircle cx='1300' cy='200' r='250' fill='%23c0d4a0' opacity='0.2'/%3E%3C/svg%3E");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  
+  /* 1. LE FOND RESTE BLANC */
+  background-color: #ffffff;
+  
+  /* 2. LES MOTIFS ORGANIQUES EN CONTOUR (lignes fines) */
+  background-image: 
+    /* Grands cercles concentriques en haut à gauche */
+    radial-gradient(circle at 10% 10%, transparent 0%, transparent 18%, rgba(140, 170, 110, 0.15) 18.5%, transparent 19%),
+    radial-gradient(circle at 10% 10%, transparent 0%, transparent 25%, rgba(140, 170, 110, 0.12) 25.5%, transparent 26%),
+    radial-gradient(circle at 10% 10%, transparent 0%, transparent 32%, rgba(140, 170, 110, 0.10) 32.5%, transparent 33%),
+    
+    /* Vagues / formes fluides en bas à droite */
+    radial-gradient(ellipse at 90% 90%, transparent 0%, transparent 30%, rgba(180, 200, 150, 0.15) 30.5%, transparent 31%),
+    radial-gradient(ellipse at 90% 90%, transparent 0%, transparent 40%, rgba(180, 200, 150, 0.12) 40.5%, transparent 41%),
+    
+    /* Petites formes organiques éparpillées */
+    radial-gradient(circle at 80% 20%, transparent 0%, transparent 8%, rgba(160, 190, 130, 0.12) 8.5%, transparent 9%),
+    radial-gradient(circle at 20% 80%, transparent 0%, transparent 12%, rgba(160, 190, 130, 0.10) 12.5%, transparent 13%),
+    radial-gradient(circle at 50% 50%, transparent 0%, transparent 5%, rgba(200, 210, 170, 0.15) 5.5%, transparent 6%);
+  
+  /* 3. Taille et positionnement */
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* 4. On garde le texte lisible */
+  color: #2c3e50;
+}
+
+/* Pour que le fond couvre toute la hauteur même si le contenu est court */
+html, body, #root {
+  min-height: 100vh;
 }
 
 /* Forme organique 1 (haut gauche) */
